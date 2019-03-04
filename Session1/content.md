@@ -89,37 +89,6 @@ int main()
 - 1. Modify the program to display your name
 - 2. Modify the program to also display your address
 
-
-### Functions
-- A function defines a piece of task
-- A function has to return either a value or nothing.
-    - If it returns a value has to  specify the type of the returned value (e.g int from integer)
-    - Otherwise **void**
-- With the except of the main function, every function has to be defined before it is used
-    - This definition is called the prototype of the function and has the following form
-        <return type> <function name> (<list of parameter>){
-            <body-of-the-function>
-        }
-    - This prototype usually stays in a .h file (header file)
-
-#### Exercises
-- 1. Create a function which displays  your name
-- 2. Create a function which displays your address
-
-### Comments
-- Are a piece of text ignored by the compiler
-- Comments can be on one line or multiple lines
-
-#### Exercises
-- Add comments to the hello world program to specifiy what each line does
-
-###  Variables and operators
-- A variable is simply a container in which we can stuff values, characters or any kind of information
-- Later we are using the name of the container as a placeholder for the value inside
-- This container is named after what it holds (for example age)
-
-
-
 ### Homework exercises:
 
 #### 1. H1-Part1
