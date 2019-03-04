@@ -121,6 +121,8 @@ int main()
 
 
 ### Homework exercises:
+
+#### 1. H1-Part1
 1. Convert from decimal to binary the following numbers:
     - 29, 33, 19, 89, 55
 2. Convert from binary to decimal the following numbers:
@@ -141,4 +143,28 @@ int main()
    *   *
   *     *
  *********
+```
+#### 2. H1-Part 2
+1. Convert from decimal to binary the following numbers:
+    - 123, 231, 245, 255
+2. Convert from binary to decimal the following numbers:
+    - 100000001, 101010101, 111100000
+3. Create a program which displays the perfect square of the first 10 numbers (perfect square = patratul perfect al unui numar. De exemplu patratul perfect al numarului 8 este 64 deoarece 8x8 = 64). The program should print each perfect square on a single line like:
+Square root of 1 is: 1
+Square root of 2 is: 4
+Square root of 3 is: 9
+Square root of 4 is: 16
+
+4. Create a program which will display the following figure:
+```c
+    * 
+   * *
+  * * *
+ * * * *
+* * * * *
+* * * * *
+ * * * *
+  * * * 
+   * *  
+    *  
 ```
