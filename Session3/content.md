@@ -126,3 +126,39 @@ int main(void)
     }
 
     ```
+2. Division and the Modulus Operator
+    - Statement: Suppose you have a jar of 45 cookies and a group of seven children. You'll divide the cookies equally among the children and work out how many each child has. Then you'll wortk out how many cookies are left over
+
+    ```c
+        #include <stdio.h>
+        #include <stdlib.h>
+
+        int main()
+        {
+            int cookies = 45;
+            int children = 7;
+            int cookies_per_child = 0;
+            int cookies_left_over = 0;
+
+            //Calculate how many cookies each child gets when they are divided up
+            cookies_per_child = cookies / children;
+            printf("You have %d children and %d cookies\n", children, cookies);
+            printf("Give each child %d cookies.\n", cookies_per_child);
+
+            // Calculate how many cookies are left over
+            cookies_left_over = cookies % children;
+            printf("There are %d cookies left over.\n", cookies_left_over);
+
+            return 0;
+        }
+        ```
+
+### Exercises:
+1. What is a variable?
+2. What kind of data can we store inside a variable?
+3. Write a C function which returns the addition of two numbers received as parameters.
+4. Write a C function which returns the subtraction of two numbers received as parameters.
+5. Write a C function which returns the multiplication of two numbers received as parameters.
+6. Write a C function which returns the division of two numbers received as parameters.
+7. Write a C function which returns the modulus of two numbers received as parameters.
+8. Write a C  program to find the third angle of a triangle if two angles are given.
