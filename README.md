@@ -14,5 +14,9 @@ This repo contains information about the course used to teach beginners programm
         - The return value of the ***main*** function
 - [Session 2](./Session2/content.md)
     - Introduction to functions
+        - Functions with return values
+        - Functions without return values
     - Comments
-    - Variables and operators
+    - Variables
+    - Increment and decrement operators
+

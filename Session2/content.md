@@ -51,6 +51,13 @@
     //We can declare variables without initializing them
     int unusedVariable;
     ```
+- Rules when declaring variables names
+    - must not begin with a digit
+        - 8_Ball, 21_game => Are illegal names
+    - must nost include characters other than letters, underscores, and digits:
+        - Hash!, Mary-Lou => illegal names
+- Variable names are case sensitive (what is this? :))
+- When naming a variable, try to name it according to what it is supposed to do. For example, if we want to store the salary, we would have a variable called salary
 ### 4.Increment/Decrement operators
 
 #### 4.1 Increment operators
@@ -94,5 +101,5 @@
 ### 5. Homework exercises
 1. What is the purpose of a function? How can it help a programmer?
 2. Create a function which computes the area of a triangle. Give it all the parameters that it needs (base, height);
-3. Create a function which transforms seconds into years, months and days
+3. Create a function which transforms seconds into minutes , hours and days
 4. Create a function which accepts two integers from the user and calculates the sum of the two numbers. (You can choose either to return or display it)
