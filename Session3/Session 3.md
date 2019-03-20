@@ -1,17 +1,17 @@
-## Session 3
+# Session 3
 
 
-### Variables
+## ***Variables***
 
-- Variable types
+### Variable types
     - There are several different types of variables, and each type of variable is used for storing a particular kind of data
         - integer numerical values
         - noninteger numerical values (e.g 12.032)
         - character values (e.g 'a', "ala bala portocala")
 
 
-#### **Integer** variables
-- an integer id any whole number without a decimal point
+#### **Integer variables**
+- an integer id is any whole number without a decimal point
     - 123, 10999999, 200091, 88, 1
 - example of numbers which are ***not*** integers:
     - 1.234, 999.9, 2.0, -0.034, 3.141523
@@ -32,7 +32,7 @@ int main(void)
 ```
 - The entire text (also called string) between `""` is called a control string because it controls how we want the ***salary*** variable to be displayed.
 - `%d` is called a ***conversion specifier*** for the value of the variable
-    - A ***conversion specifier*** determine how a binary value should be converted before it is displayed.
+    - A ***conversion specifier*** determines how a binary value should be converted before it is displayed.
     - `d` stands for decimal (base 10) number
     ```c
     #include <stdio.h>
@@ -75,10 +75,10 @@ int main(void)
             return 0;
         }
     ```
-    - Note: we can also assign values to a variable when we declare it (e.g int age = 29).
+    - Note: we can also assign values to a variable when we declare it (e.g ```int age = 29```).
         - This is also a good practice because until we give a value to a variable, it will contain junk values.
 
-### Basic arithmetic operations
+#### **Basic arithmetic operations**
 - An arithmetic expression is any expression that results in a numerical value.
 - Example of arithmetic expressions:
     - 1 + 2
