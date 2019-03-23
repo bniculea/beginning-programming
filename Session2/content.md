@@ -9,13 +9,13 @@
         }
     ```
     
-- ***\<return type\>***  - refers to the value which is returned by the function. This can be either **int** or **void** (in a future lesson we will learn that there are multiple types, other than **int**) 
+- ***<return type\>***  - refers to the value which is returned by the function. This can be either **int** or **void** (in a future lesson we will learn that there are multiple types, other than **int**) 
     - A function can return one or zero values
     - If it returns a value, it has to  specify the type of the returned value. This means that the function should return, for example, an integer number (e.g 5, 11, 2123, etc)
     - If it does not return a value, we should use the keyword **void** before declaring the function name
-- __\<function name\>__ - represents the names that we gave to that piece of code which is handling a specific task for us. This is useful when we want, later, to call the function. 
+- __<function name\>__ - represents the names that we gave to that piece of code which is handling a specific task for us. This is useful when we want, later, to call the function. 
     - Calling a function is like a shortcut, we just want to bring some functionality into our logic but without recreating it, maybe it was not even created by us. For example, we are using the **printf** function but this is a piece of code which is not created by us.
-- \<list of parameters\> - represents the input data which is used by our function in order to fulfill its responsibilities. We can think to a function like to a cookie:
+- __<list of parameters\>__ - represents the input data which is used by our function in order to fulfill its responsibilities. We can think to a function like to a cookie:
     - the parameters are the ingredients to our recipe (e.g sugar, milk, etc)
     - the recipe is the logic which mixes in the ingredients (a.k.a parameters)
     - the cookie is the end result of our function when it is called
