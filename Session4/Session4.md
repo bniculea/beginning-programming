@@ -253,6 +253,7 @@ Note: x1, y1, x2, y2 are all floating point values.
 1. Create a program which reads two floating point numbers from the keyboard and computes their product
 2. Create a program which reads two floating number and returns the result of their division with 3 decimal digits.
 3. Create a program which reads two numbers, x and y and returns x to the power y. Make use of the `pow` function from the `math.h` library.
-4. Create a program which reads a number from the keyboard and returns its square root. Make use of the `pow` function from the `math.h` library.
-5. Create a program which reads the number of seconds from the keyboard and returns the number of hours, minutes and seconds in the following format:
+4. Create a program which reads two numbers and returns their average.
+5. Create a program which reads a number from the keyboard and returns its square root. Make use of the `pow` function from the `math.h` library.
+6. Create a program which reads the number of seconds from the keyboard and returns the number of hours, minutes and seconds in the following format:
 `x seconds are y hours z minutes and w seconds` where `x` represents the initial number of seconds (Read from the keyboard), `y` is the number of hours, `z` is the number of minutes and `w` is the number of seconds
