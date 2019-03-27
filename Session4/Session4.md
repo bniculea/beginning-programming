@@ -98,6 +98,18 @@
 
 #### Conversion specifiers for Floating-Point Variables
 
+- In order to display floating point variables we use `%f` as conversion specifier
+    - e.g `printf("%f divided by %f is %f", 10.0, 4.0, 10.0/4.0)`
+
+#### Controlling the number of decimals in the output
+
+- If a division contains a lot of decimals in the output (e.g 34.45454555555555) we can decide how many we want to be displayed (for example we only want to display 3 decimals, thus obtaining 34.454)
+- This can be done using the following syntax of the conversion specifier:
+    - `printf("%.nf", xx.xxx)`
+        - `n` is the number of decimals we want to display
+        - `xx.xxxx` is the decimal number we want to format
+        - example: `printf("%.3f",34.4545455555555)` will display `34.454`
+
 ##### Floating point exercises
 
 1. Given a land of 25 square kilometers splitted into 12 equal smaller areas, what is the surface of each smaller area?
@@ -114,3 +126,133 @@
         return 0;
     }
     ```
+
+#### Accepting input from user
+
+- In order to read data entered by user in the terminal, we can use the `scanf` function
+- This function also require us to include the `stdio.h` header:
+    - `#include <stdio.h>`
+- Syntax: `scanf("<format_specifier>", &<variable_name>)`
+    - `<format_specifier>` can be any of %f or %d depending on what kind of data we are expecting (floating point numbers, decimal numbers, characters, etc)
+    - `<variable_name>` is the name of the variable which will hold the data entered by the user.
+    - example:
+        ```c
+            float diameter;
+            scanf("%f", &diamester)
+        ```
+
+##### Advanced exercises using floating point numbers
+
+1. Create a program which calculates the area and the circumference of a circle. The program will read the diameter value from the terminal
+    - Solution:
+    
+    ```c
+    #include <stdio.h>
+
+    int main()
+    {
+        float radius = 0.0f;
+        float diameter = 0.0f;
+        float circumference = 0.0f;
+        float area = 0.0f;
+        float Pi = 3.14159265f;
+
+        printf("Input the diameter of the circle: ");
+        scanf("%f", &diameter);
+        radius = diameter / 2.0f;
+        circumference = 2.0 * Pi * radius;
+        area = Pi * radius * radius;
+
+        printf("\nThe circumference is %.2f", circumference);
+        printf("\nThe area is %.2f \n", area);
+
+        return 0;
+    }
+
+    ```
+2. Write a program to compute the area and the permiter of a rectangle. The width and the height are read from the terminal.
+    - Solution:
+    ```c
+        #include <stdio.h>
+
+        int main()
+        {
+            float width = 0.0f;
+            float height = 0.0f;
+            float area = 0.0f;
+            float perimeter = 0.0f;
+
+            printf("Enter the width of the rectangle: \n");
+            scanf("%f", &width);
+            printf("Enter the height of the rectangle: \n");
+            scanf("%f", &height);
+
+            perimeter = 2 * width + 2 * height;
+            area = width * height;
+            printf("Rectangle perimeter: %.2f\n", perimeter);
+            printf("Rectangle area: %.2f", area);
+            return 0;
+        }
+    ```
+3. Write a program which reads from the keyboard the number of the days and returns the number of years, weeks and days.
+- Note: ignore leap years
+- Example:
+    - Input: 1329 days
+    - Output: 3 years 33 weeks and 3 days
+
+- Solution:
+    ```c
+        #include <stdio.h>
+
+        int main()
+        {
+            printf("Please enter the number of days: \n");
+            int totalNumberOfDays = 0;
+            scanf("%d", &totalNumberOfDays);
+
+            int years = totalNumberOfDays / 365;
+            int remainingDays = totalNumberOfDays % 365;
+            int weeks = remainingDays / 7;
+            int days = remainingDays - (weeks * 7);
+            printf("%d days is: %d years and %d weeks and %d days",totalNumberOfDays, years, weeks, days);
+
+            return 0;
+        }
+    ```
+4. Write a C program to calculate the distance between the two points.
+Note: x1, y1, x2, y2 are all floating point values.
+- Solution:
+    ```c
+    #include <stdio.h>
+    #include <math.h>
+    int main()
+    {
+        float x1;
+        float y1;
+        float x2;
+        float y2;
+        printf("Please enter the x coordinate of the first point: ");
+        scanf("%f",&x1);
+        printf("Please enter the y coordinate of the first point: ");
+        scanf("%f",&y1);
+        printf("Please enter the x coordinate of the second point: ");
+        scanf("%f",&x2);
+        printf("Please enter the y coordinate of the second point: ");
+        scanf("%f",&y2);
+
+        float distance = sqrt(pow((x2-x1), 2) + pow((y2-y1),2));
+
+        printf("The distance between Point A(%.2f,%.2f) and Point B(%.2f,%.2f) is %.2f", x1,y1, x2,y2, distance);
+
+        return 0;
+    }
+
+    ```
+### Homework exercises
+
+1. Create a program which reads two floating point numbers from the keyboard and computes their product
+2. Create a program which reads two floating number and returns the result of their division with 3 decimal digits.
+3. Create a program which reads two numbers, x and y and returns x to the power y. Make use of the `pow` function from the `math.h` library.
+4. Create a program which reads a number from the keyboard and returns its square root. Make use of the `pow` function from the `math.h` library.
+5. Create a program which reads the number of seconds from the keyboard and returns the number of hours, minutes and seconds in the following format:
+`x seconds are y hours z minutes and w seconds` where `x` represents the initial number of seconds (Read from the keyboard), `y` is the number of hours, `z` is the number of minutes and `w` is the number of seconds

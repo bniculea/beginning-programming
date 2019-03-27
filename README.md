@@ -20,3 +20,7 @@ This repo contains information about the course used to teach beginners programm
     - Variables
     - Increment and decrement operators
 
+- [Session 3](./Session3/Session3.md)
+
+- [Session 4](./Session4/Session4.md)
+
