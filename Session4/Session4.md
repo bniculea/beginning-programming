@@ -260,14 +260,15 @@ Note: x1, y1, x2, y2 are all floating point values.
 
 ### Extra Homework exercises
 1. Write a C program that takes hours and minutes as input, and calculates the total number of minutes.
-2. Write a program in C that reads a firstname, lastname and year of birth and display the names and the year one after another sequentially.
+2. Write a program in C that reads a forename, surname and year of birth and display the names and the year one after another sequentially.
     - Expected Output : 
         - Input your firstname: Andrei 
         - Input your lastname: Bianu 
-        - Input your year of birth: 2003 
-        - Result: Andrei Bianu 2003
+        - Input your year of birth: 2004 
+        Andrei Bianu 2004
 3. Write a program that converts Celsius grades to Fahrenheit.
-    - Input a temperature (in Celsius):  45 Celsius degress are 113.0 Fahrenheit. degrees
+    - Input a temperature (in Celsiul): 45
+    45 Celsius degress are 113.0 Fahrenheit. degrees
     - The temperature T in degrees Fahrenheit (°F) is equal to the temperature T in degrees Celsius (°C) times 9/5 plus 32.
 4. Write a C program to return the absolute value of an integer. 
     - Hint: use the `abs()` function from the math.h library
