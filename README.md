@@ -24,3 +24,5 @@ This repo contains information about the course used to teach beginners programm
 
 - [Session 4](./Session4/Session4.md)
 
+- [Session 5](./Session5/Session5.md)
+

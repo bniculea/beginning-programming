@@ -1,8 +1,8 @@
 # Session 5
 
-### Complicated expression
+### Complicated expressions
 
-- We can get to more complicated expression by combining multiple operators
+- We can get to more complicated expressions by combining multiple operators
     - Example:
         - `2 * (3 + 3 * (5 + 4))`
         - The normal rules for operator precedence apply, so multiplication and division happen before adition or subtraction
@@ -144,7 +144,58 @@ int main()
     - `char letter = 'A'`
     - `char digit = 9`
     - `char exclamation='!'`
- TODO => Add example of displaying a word and also a similar exercise. Use asciitable.com
+
+
+#### Common escape sequences\
+
+- An escape sequence is a combination of characters which represents a special value like `newline`, `tab`, `quotes`, etc.
+- Below you can see how can we declare escape sequences using a char variable:
+    - `char newline = '\n'`
+    - `char tab = '\t'`
+    - `char singleQuote = '\'`
+
+- Even though, we see that a char value represents a character, behind the scene it is an integer value.
+    - This value is following one of the most famous formats, namely `ASCII` which comes from `American Standard Code for Information Interchange`
+        - You can see all the ASCII codes at this link: http://www.asciitable.com/
+
+
+- A variable of type `char` has a sort of dual personality: you can interpret it as a character or as an integer.
+- Below you can see an example of an arithmetic operation with a value of type char:
+    ```c
+    #include <stdio.h>
+    #include <stdlib.h>
+
+    int main()
+    {
+        char letter = 'C';
+        printf("The letter contains the character %c with value %d\n", letter, letter);
+        letter = letter + 3;
+        printf("After adding the number 3, the letter contains now the character %c with value %d", letter, letter);
+        return 0;
+    }
+
+    ```
+- NOTE: we use `%c` as a conversion specifier when reading or displaying `char` variables.
+- Exercise 1: Read a capital case character from the keyboard and return the lowercase version.
+    - Input: `A`
+    - Output: `a`
+    - Solution:
+        ```c
+        #include <stdio.h>
+        #include <stdlib.h>
+
+        int main()
+        {
+
+            char letter;
+            printf("Enter a capital case character (e.g A, Y, Z, etc: ");
+            scanf("%c", &letter);
+            char lowercaseLetter = letter + 32;
+            printf("The lowercase version is: %c", lowercaseLetter);
+
+            return 0;
+        }
+        ```
 ### Exercises
 
 1. Use parantheses  so  that the the following expression evaluates to `18`
@@ -152,5 +203,8 @@ int main()
 2. Create a program which will display how many bytes the following types occupy:
     - char, short, int, float, double
     - The output should look like this:
-        - Variables of type char occupy 1 bytes.
+        - `Variables of type char occupy 1 bytes.`
     - HINT: make use of the `sizeof` operator
+3. Create a program which reads a lowercase character and returns the capital case version.
+    - Input: `a`
+    - Output: `A`
