@@ -26,3 +26,8 @@ This repo contains information about the course used to teach beginners programm
 
 - [Session 5](./Session5/Session5.md)
 
+- [Session 6](./Session6/Session6.md)   
+    - Boolean data types
+    - Decision making statements
+    - `if`, `if-else` statements
+    - Exercises
