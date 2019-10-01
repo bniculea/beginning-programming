@@ -273,6 +273,32 @@
                         return 0;
                     }
                   ```
+
+#### Nested if-else statements
+ - When we have an `if-else` statement(s) inside of another ```if-else``` statement, we have a `nested if-else`
+    - ```c
+            if (condition1){
+                if(condition2){
+                    //Statements inside the body of nested if
+                } else {
+                    //Statements inside the body of nested else
+                }
+            }else 
+                otherStatement;
+    ```
+#### Multiple conditions and logical operators
+ - In C/C++, logical operators are used to perform logical operations on the given expression
+ - There are 3 logical operators in the C/C++ language:
+    - `&&` (logical AND)
+    - `||` (logical OR)
+    - `!` (logical NOT)
+
+|Operator | Example/Description                                                       |
+|-------- |----------------------------------------------------              |
+|   `&&`  | `(x < 5) && (y < 5)` -  `it returns true when both conditions are true`   |
+|   `||`  | `(x >= 10) || (y >=10 5)` -  `it returns true when at least one of the condition is true`   |
+|   `!`  | `!((x < 5) && (y < 5))` -  `it reverses the curent state of the expression. If without it, evaluates to true, the final result will be reversed, namely false`   |
+
 ##### Class Exercises
 
 1. Create a program which enables the selling of a product which costs 3.50 ron per single-unit. If the client will buy more than 10 products, then offer a 5% discount. 
@@ -297,7 +323,7 @@
                 return 0;
             }
           ```
-2. Write a C program to accept two integers and check whether they are equal or not.
+2. Write a C++ program to accept two integers and check whether they are equal or not.
     - a) Input: 13 13
        Expected output: number1 and number2 are equal.
     - b) Input 13 31
@@ -320,7 +346,7 @@
                 return 0;
             }
         ```
-3.  Write a C program to check whether a given number is even or odd.  
+3.  Write a C++ program to check whether a given number is even or odd.  
     - a) Input: 21
          Expecrted output: 21 is an odd number
     - b) Input 46
@@ -343,7 +369,7 @@
                 return 0;
             }
         ``` 
-4. Write a C program to find whether a given year is a leap year or not.
+4. Write a C++ program to find whether a given year is a leap year or not.
     - a) Input 2016
          Expected output: 2016 is a leap year with 366 days
     - b) Input 2017
@@ -370,7 +396,7 @@
                 return 0;
             }
           ``` 
-5. Write a C program to accept a coordinate point in a XY coordinate system and determine in which quadrant the coordinate point lies.
+5. Write a C++ program to accept a coordinate point in a XY coordinate system and determine in which quadrant the coordinate point lies.
     - a) Input: 3 4
          Expected output: The point P(3,4) lies in the first quadrant
     - b  Input -3 -3
@@ -401,7 +427,54 @@
             }
 
           ```
+6. Write a C++ program which reads 3 integers from the keyboard and determines the maximum.
+    - a) Input: 3 4 8
+        - Expected output: The greatest number is 8
+    - b) Input: 4 7 4
+        - Expected Output: The greatest number is 7
+    - c) Input: 4 4 8:
+        - Expected output: The greatest number is 8
+    - d) Input: 4 4 4
+        - Expected output: The numbers are equal
+    - Solution:
+        - ```c
+           #include <iostream>
 
+            using namespace std;
+
+            int main()
+            {
+                cout << "Hello world!" << endl;
+                int x, y, z;
+                cin >> x >> y >> z;
+                if(x > y ){
+                    if(x > z) {
+                        cout << "The greatest number is " << x;
+                    } else if (z > x){
+                        cout << "The greatest number is " << z;
+                    } else {
+                        cout << "The greatest number is " << x;
+                    }
+                } else if (y > x) {
+                    if (y > z) {
+                        cout << "The greatest number is " << y;
+                    } else if (z > y) {
+                        cout << "The greatest number is " << z;
+                    } else {
+                        cout << "The greatest number is " << y;
+                    }
+                }else if (x == y){
+                    if ( x > z) {
+                        cout << "The greatest number is " << y;
+                    } else {
+                        cout << "The greatest number is " << z;
+                    }
+                } else {
+                    cout << "Numbers are equal";
+                }
+                return 0;
+            }
+          ```
 ### Homework exercises
 
 1. You’re selling a product that’s available in two versions: type 1 is a
@@ -419,7 +492,7 @@ Write a program that prompts the user to enter the product type and a quantity, 
     - Input: 7
     - Output: Month have 31 days
     - Note: there are multiple months with 31 and 30 days
-5. Write a C code that prompts the user to input tree integer values and find the greatest value of the three values.
+5. Write a C++ code that prompts the user to input tree integer values and find the greatest value of the three values.
     - Input: 3 7 1
     - Output: The greatest number is 7
 6. Write C code to compute the real roots of the equation: ax^2+bx+c=0.
