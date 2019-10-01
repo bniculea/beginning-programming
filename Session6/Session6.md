@@ -495,6 +495,10 @@ Write a program that prompts the user to enter the product type and a quantity, 
 5. Write a C++ code that prompts the user to input tree integer values and find the greatest value of the three values.
     - Input: 3 7 1
     - Output: The greatest number is 7
-6. Write C code to compute the real roots of the equation: ax^2+bx+c=0.
+6. Write C++ code to compute the real roots of the equation: ax^2+bx+c=0.
     - More details about how an equation of second degree is resolved, here: https://ekuatio.com/en/how-to-solve-second-degree-equations-step-by-step-resolved-exercises/
-            
+7. Write a C++ program which check if three sides form a triangle or not
+    - Input :  a = 7, b = 10, c = 5 
+    - Output : The entered numbers can form a valid triangle
+    - Input : a = 1 b = 10 c = 12 
+    - Output : The entered numbers cannot form a valid triangle
