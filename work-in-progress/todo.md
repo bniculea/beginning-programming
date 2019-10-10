@@ -1,2 +1,3 @@
 ## Content to add for next session
-- Start Session for Loops together with exercises
+- - add more exercises for the `for loop`
+- continue with the loop theory: page 143(148/675);

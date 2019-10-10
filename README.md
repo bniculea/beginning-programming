@@ -25,9 +25,12 @@ This repo contains information about the course used to teach beginners programm
 - [Session 4](./Session4/Session4.md)
 
 - [Session 5](./Session5/Session5.md)
+    - Advanced expressions
+    - Exercises with floating points data types
 
 - [Session 6](./Session6/Session6.md)   
     - Boolean data types
     - Decision making statements
     - `if`, `if-else` statements
     - Exercises
+- [Session 7](./Session7/Session7.md)

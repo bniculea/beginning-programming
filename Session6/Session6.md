@@ -296,7 +296,7 @@
 |Operator | Example/Description                                                       |
 |-------- |----------------------------------------------------              |
 |   `&&`  | `(x < 5) && (y < 5)` -  `it returns true when both conditions are true`   |
-|   `||`  | `(x >= 10) || (y >=10 5)` -  `it returns true when at least one of the condition is true`   |
+|   `||`  | `(x >= 10) || (y >=10)` -  `it returns true when at least one of the condition is true`   |
 |   `!`  | `!((x < 5) && (y < 5))` -  `it reverses the curent state of the expression. If without it, evaluates to true, the final result will be reversed, namely false`   |
 
 ##### Class Exercises
