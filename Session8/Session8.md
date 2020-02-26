@@ -35,6 +35,9 @@
         - The first element,  is the first elements thus the offset is 0
         - The second element is offset by 1 from the first element, thus we access it via `numbers[2]`
         - etc...
+- We can also specify an index for an array element by an expression in the square brackets following the array name. The expression must result in an integer value that correspond to one of the possible index values.
+    - For example you could write numbers `[i-2]`. If i is 3m this accesses `numbers[1]`, the second element in an array. 
+    - The only constraint for using an expression when accessing an element is that it must produce an `integer` result, and the result must be a legal index value for the array
 For a better understanding of arrays, we should start with a example. In the following snippet we will see how easy is to compute the average grade score for the students in a class.
 
 - Class Exercise 1
