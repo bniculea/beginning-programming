@@ -38,6 +38,7 @@
 - We can also specify an index for an array element by an expression in the square brackets following the array name. The expression must result in an integer value that correspond to one of the possible index values.
     - For example you could write numbers `[i-2]`. If i is 3m this accesses `numbers[1]`, the second element in an array. 
     - The only constraint for using an expression when accessing an element is that it must produce an `integer` result, and the result must be a legal index value for the array
+        - If you use an expression for an inex value that's outside the legal range for the array, the program will give undefined results. The compiler cannot help in this situation and the program will pick whatever garbage resides at that memory
 For a better understanding of arrays, we should start with a example. In the following snippet we will see how easy is to compute the average grade score for the students in a class.
 
 - Class Exercise 1
@@ -72,5 +73,150 @@ For a better understanding of arrays, we should start with a example. In the fol
     - Building on the previous exercises, consider that we also want to save the grades for each student and then display the grade and the average next to it. In this scenarion, we will make use of arrays
     - Solution: 
         ```c
+            #include <iostream>
+
+            using namespace std;
+            int main() {
+                int grades[10];
+                int count = 10;
+                int sum = 0;
+                float average = 0.0f;
+                cout << "Enter the 10 grades: \n";
+                for (int i = 0; i < count; i++) {
+                    cout << i+1  <<"> ";
+                    cin >> grades[i];
+                    sum += grades[i];
+                }
+                average = (float) sum / count;
+                for(int i = 0; i < count; i++) {
+                    cout<< "Student #" << i+1 <<": " << grades[i] <<" average is : " << average << endl;
+                }
+                return 0;
+            }
+        ```
+
+## Arrays and memory management
+- When you declare an array, you give the compiler all the information it needs to allocate the memory for it.
+- The type of value determines the number of bytes that each element will require
+- The array dimension specifies the number of elements
+- The number of bytes that an array will occupy is the number of elements multiplied by the size of each element
+- One important trick from the formula above, in order to find how many elements are inside an array, we simply divide the size of the entire array by the size of the first element:
+    - ```c
+            cout << sizeof(grades) / sizeof(grades[0]);
+        ```
+    - The explanation here is as follows:
+        - As we have 10 elements in our array, `sizeof(grades)` is `10 * sizeof(int)` which on my machine translates to `10 * 4` as int occupies 4 bytes on my machine
+        - And `sizeof(grades[0])` is 4 because `grades[0]` is an `int` number and `sizeof(int)` is `4 bytes`
+        - Now dividing `40 / 4` gives us the total number of elements in the array
+
+### Initializing an array
+- Most of the time we will want to assign initial values for the elements of your array most of the time, even if it's only for safety's sake.
+- To initialize the elements of an array, you just specify the list of initial values between braces and separate them by commas in the declaration:
+     ```c++
+        double values[5] = {1.5, 2.5, 3.4, 4.3, 5.1};
+    ```
+- To initialize the whole array, there must be one value for each element. If there are fewer initializing values than elements, the elements without initializing values will be set to 0. This means that if you write
+    ```c++
+        double values[5] = {1.5, 2.5, 3.5};
+    ```
+    only the first three elements will have values and the rest will be set to zero; The final array will look like this:
+    ```c++
+        Index   0       1       2       3       4       5
+        Value   1.5     2.5     3.5     0       0       0
+    ```
+- if you put more initializing balues than there are array elements, you'll get an error message from the compiler
+- However, you can omit the size of the array when you specify a list of initial values. In this case, the compiler will assume that the number of elements is the number of values in the array:
+    ```c++
+    int primes[] = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29};
+    ```
+    - The size of the array is determined by the number of initial values in the list, so the primes array will have ten elements
+
+### Major pitfalls
+- We can always make the mistake  of iterating past the limits of an array, meaning that, for example we can try to iterate until 12 even though our array has only 10 elements. See the snippet below:
+    - ```c
+        #include <iostream>
+
+        using namespace std;
+        int main() {
+            int grades[10];
+            for(int i = 0; i < 10; i++) {
+                grades[i] = i * 10;
+            }
+
+            for(int i =0; i < 12; i++) {
+                cout << grades[i] << endl;
+            }
+        }
+        ```
+        - THe first loop initializes the array, by multiplying each element with 10 and then, we iterate again over the values but we set 12 as the limit even though we only have 10 values
+        - Most of the time, the program will work but will display whatever garbage finds at that address
+
+
+- Class Exercises 3:
+    - Read 13 digits (0 to 9 inclusive) from stdin and then display their histogram
+    - Solution: 
+        ```c++
+            #include <iostream>
+            using namespace std;
+            int main() {
+                int histogram[10] = {0};
+                for(int i = 0; i < 13; i++) {
+                    cout << "Enter a number between 0 and 9: ";
+                    int number;
+                    cin >> number;
+                    histogram[number]++;
+                }
+                for (int i=0; i < 10; i++) {
+                    cout<< "We have seen " << i << ": " << histogram[i] << " time(s)" << endl;
+                }
+            }
 
         ```
+
+##TODO - Class exericises
+- sort an array in ascending and descending using bubble sort
+- merge two arrAYS of same size 
+
+## Homework exercises:
+
+1. Write a program in C++ to store 10 elements in an array and then print it.
+    - Sample input:
+        Input 10 elements in the array:
+        element #1: 1
+        element #2: 4
+        ....
+        element #10: 99
+    - Sample output:
+        Elements in array are: 1 4 ... 99
+2. Write a program in C++ to read 10 number of values in an array and display it in reverse order
+    - Sample input:
+        Input 10 elements in the array:
+        element #1: 1
+        element #2: 4
+        element #3: 5
+        ....
+        element #10: 99
+    - Sample output:
+        Elements in reversed order are: 99... 5 4 1
+
+3. Write a program in C++ which finds the sum of all elements of an array with 10 elements: 
+    - Sample input:
+        Input 10 elements in the array:
+        element #1: 1
+        element #2: 4
+        element #3: 5
+        ....
+        element #10: 99
+    - Sample output:
+        Sum is: 66 (note you will have a different value as this sum is for display only)
+4. Write a C++ program which will read an array and then display how many numbers have exactly 2 appearance in it.
+    - Sample input:
+        - 1 12 2 12 1 1 7 3 5 6 7
+    - Sample output:
+        - 2 (only 7 and 12 appear exactly 2 times in the array)
+5. Write a C++ program  to print all unique elements in an array
+    - Sample input:
+        - 1 2 3 4 2 3 5 6 7 8
+    - Sample output:
+        - Unique elements are: 1 4 5 6 7 8
+6. Write a C++ program to merge two arrays of same size and then sort them in descending order.
