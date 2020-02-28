@@ -172,11 +172,116 @@ For a better understanding of arrays, we should start with a example. In the fol
             }
 
         ```
+- Class Exercise 4: 
+    - Write a C++ program which sorts an array in ascending order.
+    - Solution:
+        ```c++
+        #include <iostream>
 
-##TODO - Class exericises
-- sort an array in ascending and descending using bubble sort
-- merge two arrAYS of same size 
+        using namespace std;
+        int main() {
+            int numbers[] =  {1,2,5,3,1,5,1,8,0,5,3,5};
+            int numbersLength = sizeof(numbers) / sizeof(numbers[0]);
+            for(int i = 0; i < numbersLength;i++) {
+                for (int j = 0; j < numbersLength-1; j++) {
+                    if (numbers[j] > numbers[j+1]) {
+                        int temp = numbers[j];
+                        numbers[j] = numbers[j+1];
+                        numbers[j+1] = temp;
+                    }
+                }
+            }
 
+            //display the array
+            for (int i = 0; i < numbersLength; i++) {
+                cout << numbers[i] << " ";
+            }
+        }
+        ```
+- Class Exercises 5:
+    - Write a C++ program which merges two arrays of the same size;
+    - Solution: 
+        ```C++
+        #include <iostream>
+
+        using namespace std;
+        int main() {
+            int numbers[] =  {1,2,3,4,5,6};
+            int numbers2[] = {7,8,9,10,11,12};
+            int numbersLength = sizeof(numbers) / sizeof(numbers[0]);
+            int result [2 *numbersLength];
+
+            // Add numbers from first array
+            for(int i = 0; i < numbersLength;i++) {
+            result[i] = numbers[i];
+            result[i+numbersLength] = numbers2[i];
+            }
+
+            //display the array
+            for (int i = 0; i < 2*numbersLength; i++) {
+                cout << result[i] << " ";
+            }
+        }
+        ```
+- Class Exercise 6:
+    - Write a C++ program which deletes all the duplicates from an array.
+    - Solution:
+        ```C++
+            #include <iostream>
+
+            using namespace std;
+            int main() {
+                int numbers[] =  {1,2,1,2,1,2,1,2,1,2};
+                int numbersLength = sizeof(numbers) / sizeof(numbers[0]);
+                for(int i =0; i < numbersLength; i++) {
+                    for (int j = i+1; j < numbersLength; j++) {
+                        if(numbers[i] == numbers[j]) {
+                            for (int k = j; k < numbersLength; k++) {
+                                numbers[k] = numbers[k+1];
+                            }
+                            numbersLength--;
+                            j--;
+                        }
+                    }
+                }
+                for (int i = 0; i < numbersLength; i++) {
+                    cout << numbers[i] << " ";
+                }
+            }
+
+        ```
+- Class Exercise 7:
+    - Write A C++ program to find K largest elements in a given array of integers
+    - Solution:
+        ```C++
+            #include <iostream>
+
+            using namespace std;
+            int main() {
+                int numbers[] =  {1,3,2,6,4,8,5,9};
+                int numbersLength = sizeof(numbers) / sizeof(int);
+                int k;
+                cout << "Enter K: ";
+                cin >> k;
+
+                for (int i = 0; i < numbersLength; i++) {
+                    for (int j = 0; j < numbersLength-1; j++) {
+                        if (numbers[j] < numbers[j + 1]) {
+                            int temp = numbers[j];
+                            numbers[j] =  numbers[j+1];
+                            numbers[j+1] = temp;
+                        }
+                    }
+                }
+
+                for (int i =0; i < k; i++) {
+                    cout << numbers[i] << " ";
+                }
+            }
+        ```
+    - Advanced:  
+        - For extra points, give a K greater then the length of the array
+        - Find a solution for the previous bug.
 ## Homework exercises:
 
 1. Write a program in C++ to store 10 elements in an array and then print it.
@@ -209,14 +314,38 @@ For a better understanding of arrays, we should start with a example. In the fol
         element #10: 99
     - Sample output:
         Sum is: 66 (note you will have a different value as this sum is for display only)
+
 4. Write a C++ program which will read an array and then display how many numbers have exactly 2 appearance in it.
     - Sample input:
         - 1 12 2 12 1 1 7 3 5 6 7
     - Sample output:
         - 2 (only 7 and 12 appear exactly 2 times in the array)
+
 5. Write a C++ program  to print all unique elements in an array
     - Sample input:
         - 1 2 3 4 2 3 5 6 7 8
     - Sample output:
         - Unique elements are: 1 4 5 6 7 8
+
 6. Write a C++ program to merge two arrays of same size and then sort them in descending order.
+    - Sample input:
+        - 1 2 3 4
+        - 5 6 7 8
+    - Sample output:
+        - 8 7 6 5 4 3 2 1
+
+7. Write a C++ program to count total number of duplicate elements in an array.
+    - Sample input: 
+        - 1 2 3 1 2 23 4 3
+    - Sample output: There are 3 duplicates
+
+8. Write a C++ program to find maximum and minimum element in an array
+    - Sample input: 
+        - 3 2 1 -3 5 9 7
+    - Sample output:
+        - Min is -3 and Max is 9
+9. Write a C++ program to find second largest element in an array
+    - Sample input:
+        - 3 2 1 -3 5 9 7
+    - Sample output:
+        - Second largest number is 7
