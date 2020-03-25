@@ -106,7 +106,7 @@
         - In conclusion, we only need one loop to iterate through the values.
 
 2. Write a C++ program which displays the numbers on the second diagonale of a two-dimension array.
-- Input:
+    - Input:
         - ```C++
             1 2 3
             4 5 6
@@ -118,7 +118,7 @@
             #include <iostream>
             using namespace std;
             int main(){
-                int numbers[3][4] = {
+                int numbers[3][3] = {
                         {1,2,3},
                         {4,5,6},
                         {7,8,9}
@@ -151,8 +151,50 @@
                 - `i` for the column index 
 
 3. Write a C++ program which reads a matrix from the standard input and computes its transpose.
-    - Input
-Homework exercises:
+    - Input:
+        - ```C++
+            1 2 3
+            4 5 6
+            7 8 9
+        ```
+    - Output:
+        - ```C++
+            1 4 7
+            2 5 8
+            3 6 9
+        ```
+    - Solution:
+        - ```C++
+            #include <iostream>
+            using namespace std;
+            int main() {
+                int numbers[3][3] = {
+                        {1, 2, 3},
+                        {4, 5, 6},
+                        {7, 8, 9}
+                };
+
+                int transpose[3][3];
+
+                for(int i = 0; i < 3; i++){
+                    for (int j = 0; j < 3; j++) {
+                        transpose[i][j] = numbers[j][i];
+                    }
+                }
+
+                for(int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 3; j++) {
+                        cout << transpose[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+            }
+            ```
+    - Explanation:
+        - By transpose of a matrix, we understand that the rows becomes columns and viceversa. 
+        - To start, we declare another two dimensional array which will be able to store the transpose.
+        - Then we iterate through the elements of the original matrix, and at each step, we simply store at the current position (`transpose[i][j]`), the element which can be found at the location given by `j` for the rows and `i` for the columns
+## Homework exercises:
 
 1. Write a C++ program which computes the average of the prime numbers which can be found on the main diagonale of a matrix (Two-Dimensional array)
     - Input:
@@ -173,3 +215,63 @@ Homework exercises:
             13 14 15 15
         ```
     - Output: `The harmonic mean of the numbers on the second diagonale is: 8,08`
+
+3. Write a C++ program which computes the sum of the numbers on the main diagonale and the sum of the numbers on the second diagonale and then displays which one is greater
+    - Input:
+        - ```C++
+            1  2  3  4
+            5  5  7  8
+            9  10 11 12
+            13 14 15 15
+        ```
+    - Output: `The second diagonale has the sum greater.`
+
+4. Write a C++ program which displays if a certain number, read from the standard input, is present in a Two-Diagonale array. Also the program should display how many times the number has appeared in the matrix
+    - Input: Enter the number to search for: 5
+            - ```C++
+                1  2  3  4
+                5  5  7  8
+                9  10 11 12
+                13 14 15 15
+                ```
+    - Output: `The number appears in the matrix 2 times`
+
+    - Input 2: Enter the number to search for: 51
+        - ```C++
+            1  2  3  4
+            5  5  7  8
+            9  10 11 12
+            13 14 15 15
+            ```
+    - Output: `The number could be found in the matrix`
+
+
+## Advanced exercises
+
+1. Write a C++ program which displays the number below the main diagonal (including the ones on the diagonal itself). The numbers should be displayed in a nice and formatted way. See the output below
+    - Input:
+        - ```C++
+            1  2  3  4
+            5  5  7  8
+            9  10 11 12
+            13 14 15 15
+        ```
+    - Output: 
+        - ```c++
+            1
+            5   5
+            9   10  11
+            13  14  15  15
+        ```
+2. Write a C++ program which displays the prime numbers below the main diagonal (including the ones on the diagonal itself). 
+    - Input:
+        - ```C++
+            1  2  3  4
+            5  5  7  8
+            9  10 11 12
+            13 14 15 15
+            ```
+    - Output: 
+        - ```c++
+            5 5 11 13
+            ```
