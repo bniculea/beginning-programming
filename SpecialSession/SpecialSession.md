@@ -214,3 +214,38 @@
                 }
             }
         ```
+
+6.  Create a C++ program which reads digits from 0 to 9, from the standard input and then displays their frequency. Allow the user to enter as many as She/He wants but stop reading when the user presses `q`.
+- Input: `1 3 2 4 2 6 3 6 3 6 q`
+    - Output:
+        ```C++
+            Digit:     0 1 2 3 4 5 6 7 8 9
+            Frequency: 0 1 2 3 1 0 3 0 0 0
+        ```
+    - Solution:
+        ```C++
+            #include <iostream>
+            using namespace std;
+            int main() {
+                int frequency[10] = {0};
+                int digit;
+
+                do {
+                    digit = getchar();
+                    if(digit !='\n'){
+                        int position =  digit - '0';
+                        frequency[position]++;
+                    }
+                } while (digit != 'q' && digit != EOF);
+
+                cout << "Digit:\t\t";
+                for (int i = 0; i < 10; i++) {
+                    cout << i << " ";
+                }
+                cout << endl;
+                cout << "Frequency:\t";
+                for (int i = 0; i < 10; i++) {
+                    cout << frequency[i] << " ";
+                }
+            }
+        ```
