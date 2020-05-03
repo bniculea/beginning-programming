@@ -44,7 +44,7 @@ For a better understanding of arrays, we should start with a example. In the fol
 - Class Exercise 1
     - Compute the average grade of students from a class with 7 students. Each grade should be read via the standard input.  The average should be computed using the basic arithmetic average formula.
     - Solution: 
-        - ```c
+        - ```c++
             #include <iostream>
 
             using namespace std;
@@ -72,7 +72,7 @@ For a better understanding of arrays, we should start with a example. In the fol
 - Class Exercise 2:
     - Building on the previous exercises, consider that we also want to save the grades for each student and then display the grade and the average next to it. In this scenarion, we will make use of arrays
     - Solution: 
-        ```c
+        ```c++
             #include <iostream>
 
             using namespace std;
