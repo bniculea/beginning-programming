@@ -156,13 +156,13 @@
             1 2 3
             4 5 6
             7 8 9
-        ```
+            ```
     - Output:
         - ```C++
             1 4 7
             2 5 8
             3 6 9
-        ```
+            ```
     - Solution:
         - ```C++
             #include <iostream>
@@ -203,7 +203,7 @@
             5  5  7  8
             9  10 11 12
             13 14 15 15
-        ```
+            ```
     - Output: `The average of the prime numbers on the main diagonale is 8`
 
 2. Write a C++ program which computes the harmonic mean (media armonica) of the numbers on the second diagonale.
@@ -213,7 +213,7 @@
             5  5  7  8
             9  10 11 12
             13 14 15 15
-        ```
+            ```
     - Output: `The harmonic mean of the numbers on the second diagonale is: 8,08`
 
 3. Write a C++ program which computes the sum of the numbers on the main diagonale and the sum of the numbers on the second diagonale and then displays which one is greater
@@ -223,7 +223,7 @@
             5  5  7  8
             9  10 11 12
             13 14 15 15
-        ```
+            ```
     - Output: `The second diagonale has the sum greater.`
 
 4. Write a C++ program which displays if a certain number, read from the standard input, is present in a Two-Diagonale array. Also the program should display how many times the number has appeared in the matrix
@@ -255,14 +255,14 @@
             5  5  7  8
             9  10 11 12
             13 14 15 15
-        ```
+            ```
     - Output: 
         - ```c++
             1
             5   5
             9   10  11
             13  14  15  15
-        ```
+            ```
 2. Write a C++ program which displays the prime numbers below the main diagonal (including the ones on the diagonal itself). 
     - Input:
         - ```C++
