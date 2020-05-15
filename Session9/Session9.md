@@ -3,7 +3,7 @@
 ## Introduction
 - A two-dimensional array can be declared as follows:
     -   ```c
-        int chessTable[8]8];
+        int chessTable[8][8];
         ```
     - This declares the chessTable array with 8 sets of 8 integers element. Note how each dimension is between its own pair of square brackets
     - You can visualize a two-dimensional array as a rectangular arrangement like, in our previous example, a table which has `8 rows` and each row has `8 columns`.
@@ -228,21 +228,22 @@
 
 4. Write a C++ program which displays if a certain number, read from the standard input, is present in a Two-Diagonale array. Also the program should display how many times the number has appeared in the matrix
     - Input: Enter the number to search for: 5
-            - ```C++
+        - ```C++
                 1  2  3  4
                 5  5  7  8
                 9  10 11 12
                 13 14 15 15
-                ```
+            ```
     - Output: `The number appears in the matrix 2 times`
 
-    - Input 2: Enter the number to search for: 51
-        - ```C++
+    - Input 2: Enter the number to search for: 5
+        ```C++
             1  2  3  4
             5  5  7  8
             9  10 11 12
             13 14 15 15
-            ```
+        ```
+
     - Output: `The number could be found in the matrix`
 
 

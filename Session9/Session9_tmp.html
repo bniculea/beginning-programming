@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Session9.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="multidimensional-arrays">Multidimensional Arrays</h1>
+<h2 id="introduction">Introduction</h2>
+<ul>
+<li>
+<p>A two-dimensional array can be declared as follows:</p>
+<ul>
+<li>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> chessTable[<span class="hljs-number">8</span>][<span class="hljs-number">8</span>];
+</div></code></pre>
+</li>
+<li>This declares the chessTable array with 8 sets of 8 integers element. Note how each dimension is between its own pair of square brackets</li>
+<li>You can visualize a two-dimensional array as a rectangular arrangement like, in our previous example, a table which has <code>8 rows</code> and each row has <code>8 columns</code>.</li>
+</ul>
+</li>
+<li>
+<p>Even though we can visualize them as rows and columns, in memory, all the elements are stored sequentially.</p>
+<ul>
+<li>For example, let's suppos we have the following two-dimensional array: <code>int numbers[3][4]</code></li>
+<li>In memory, the elements are stored sequentially as follows:
+<ul>
+<li><code>numbers[0][0] | numbers[0][1] | numbers[0][2] | numbers[1][0] | numbers[1][1] | numbers[1][2] | numbers[2][0] | numbers[2][1] | numbers[2][2]</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Another way of visualizing a two-dimensional array is like an array of elements where each element is an array itself</p>
+<ul>
+<li>A simple array is also called a <code>one-dimensional</code> array of elements</li>
+</ul>
+</li>
+</ul>
+<h2 id="initializing-multidimensional-arrays">Initializing Multidimensional Arrays</h2>
+<ul>
+<li>Initializing a two-dimensional array is similar to initialization of a one-dimensional array. The difference is that you put the initial values for each row between braces, <code>{}</code>, and then enclose all the rows between braces:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-keyword">int</span> numbers[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = {
+      {<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>}, <span class="hljs-comment">// Values for first row</span>
+      {<span class="hljs-number">15</span>,<span class="hljs-number">25</span>,<span class="hljs-number">35</span>,<span class="hljs-number">45</span>}, <span class="hljs-comment">// Values for second row</span>
+      {<span class="hljs-number">47</span>,<span class="hljs-number">48</span>,<span class="hljs-number">49</span>,<span class="hljs-number">50</span>} <span class="hljs-comment">// Values for third row</span>
+  }
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>You need a nested loop to process all the elements in a multidimensional array. Below you can see how you can sum the elements in a multidimensional array:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+  <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">int</span> numbers[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = {
+              {<span class="hljs-number">10</span>,<span class="hljs-number">20</span>,<span class="hljs-number">30</span>,<span class="hljs-number">40</span>}, <span class="hljs-comment">// Values for first row</span>
+              {<span class="hljs-number">15</span>,<span class="hljs-number">25</span>,<span class="hljs-number">35</span>,<span class="hljs-number">45</span>}, <span class="hljs-comment">// Values for second row</span>
+              {<span class="hljs-number">47</span>,<span class="hljs-number">48</span>,<span class="hljs-number">49</span>,<span class="hljs-number">50</span>} <span class="hljs-comment">// Values for third row</span>
+      };
+      <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; j++) {
+              sum += numbers[i][j];
+          }
+      }
+      <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The sum of the elements is "</span> &lt;&lt; sum &lt;&lt; <span class="hljs-built_in">endl</span>;
+      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="using-the-sizeof-operator">Using the <code>sizeof</code> operator</h2>
+<ul>
+<li>You can use the sizeof operator to work out the number of elements in each dimension. You just need to be a bit more careful on what the <code>sizeof</code> operator is producing:
+<ul>
+<li>Assuming we are using the same numbers multidimensional array from the previous example, the following statements are true:
+<ul>
+<li>
+<p><code>sizeof(numbers) / sizeof(numbers[0])</code> -&gt; it tells you how many rows are in our multidimensional array.</p>
+<ul>
+<li>The same principles as for the simple, one dimensional arrays, applies here when we compute this formula.</li>
+<li>Let's suppose that <code>int</code> type occupies <code>4 bytes</code> in our computer</li>
+<li><code>numbers[3][4]</code> means that we have a total of <code>3x4</code> integer numbers which means 12 integers, which occupies <code>12x4 bytes</code>, which sums up to <code>48 bytes</code>, thus, <code>sizeof(numbers)</code> is <code>48 bytes</code></li>
+<li>The first row has <code>4 elements</code> of <code>int</code> type, which means that it occupies <code>4x4 bytes</code>, namely <code>16 bytes</code>, thus <code>sizeof(numbers[0])</code> is <code>16 bytes</code></li>
+<li>Now the final formula is translated to <code>48/16 =&gt; 3</code>, where 3 is the number of rows.</li>
+</ul>
+</li>
+<li>
+<p><code>sizeof(numbers[0] / sizeof(numbers[0][0]</code> -&gt; it tells you how many elements (or columns) are in the first row (0 index);</p>
+<ul>
+<li>Homework =&gt;  proove that the above formula gives you how many elements are in the first row. Inspire from our previous example.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="accessing-elements-in-a-two-dimensional-array">Accessing elements in a two-dimensional array</h2>
+<ul>
+<li>As with simple arrays, or one-dimension array, in order to access an element in a two-dimension array, you have to specify two values:
+<ul>
+<li>one for the row of your element</li>
+<li>and another one for the column of your element</li>
+<li>e.g: in order to access the element on the third row and on the 4th column, in a two-dimension array called numbers, we type: <code>numbers[3][4]</code>.</li>
+</ul>
+</li>
+</ul>
+<h1 id="class-exercises">Class exercises</h1>
+<ol>
+<li>
+<p>Write a C++ program which prints the element on the main diagonal of a  two-dimension array with  n rows and n columns.</p>
+<ul>
+<li>Input:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>
+  <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span>
+  <span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span>
+</div></code></pre>
+</li>
+</ul>
+<pre class="hljs"><code><div></div></code></pre>
+</li>
+<li>Output: <code>The elements on the main diagonale are: 1 5 9</code></li>
+<li>Solution:
+<ul>
+<li>
+<pre class="hljs"><code><div>      <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+      <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+      <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+          <span class="hljs-keyword">int</span> numbers[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = {
+                  {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>},
+                  {<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>},
+                  {<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>}
+          };
+          <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The elements on the main diagonale are: "</span>;
+          <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
+              <span class="hljs-built_in">cout</span>&lt;&lt;numbers[i][i]&lt;&lt; <span class="hljs-string">" "</span>;
+          }
+          <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+      }
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Explanation:
+<ul>
+<li>As you can see, the elements on the main diagonale are <code>1, 5, and 9</code>.</li>
+<li>The indexes corresponding to these elements are:
+<ul>
+<li><code>numbers[0][0]</code></li>
+<li><code>numbers[1][1]</code></li>
+<li><code>numbers[2][2]</code></li>
+</ul>
+</li>
+<li>We can easily observe that the formula for a number to be on the main diagonale is <code>numbers[row][col]</code> where <code>row</code> and <code>col</code>, which represents the corresponding index of the row and column, have the same value.</li>
+<li>In conclusion, we only need one loop to iterate through the values.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Write a C++ program which displays the numbers on the second diagonale of a two-dimension array.</p>
+<ul>
+<li>Input:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>
+  <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span>
+  <span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span>
+</div></code></pre>
+</li>
+</ul>
+<pre class="hljs"><code><div></div></code></pre>
+</li>
+<li>Output: <code>The elements on the main diagonale are: 3 5 7</code></li>
+<li>Solution:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+  <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+      <span class="hljs-keyword">int</span> numbers[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>] = {
+              {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>},
+              {<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>},
+              {<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>}
+      };
+      <span class="hljs-keyword">int</span> numberOfRows = <span class="hljs-keyword">sizeof</span>(numbers) / <span class="hljs-keyword">sizeof</span>(numbers[<span class="hljs-number">0</span>]);
+      <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">"The elements on the second diagonal are: "</span>;
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numberOfRows; i++) {
+      <span class="hljs-built_in">cout</span>&lt;&lt;numbers[i][numberOfRows-i<span class="hljs-number">-1</span>]&lt;&lt; <span class="hljs-string">" "</span>;
+      }
+      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+  }
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Explanation:
+<ul>
+<li>As we can see, the elements on the second diagonale are: <code>3,5, and 7</code></li>
+<li>Their corresponding indexes are:
+<ul>
+<li><code>numbers[0][2] | numbers[1][1] | numbers[2][0]</code></li>
+</ul>
+</li>
+<li>If we try to create a formula, based on the number of rows which gives us these number, we reach the following:
+<ul>
+<li>let <code>n</code> be the number of rows meaning <code>3</code>
+<ul>
+<li>for the first number we see that that we can obtain the indexes as follows
+<ul>
+<li><code>3 (number of rows) - 0 - 1</code> for the row</li>
+<li><code>0</code> for the column</li>
+</ul>
+</li>
+<li>for the second number we can obtain the indexes by:
+<ul>
+<li><code>3 (number of rows) - 1 -1</code> for the row</li>
+<li><code>1</code> for the column</li>
+</ul>
+</li>
+<li>for the third number we can obtain the indexes by:
+<ul>
+<li><code>3 (number of rows) -2 -1</code> for the row</li>
+<li><code>2</code> for the column</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>We can generalize the  formula as follows:
+<ul>
+<li><code>n-1-i</code> for the row index</li>
+<li><code>i</code> for the column index</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Write a C++ program which reads a matrix from the standard input and computes its transpose.</p>
+<ul>
+<li>Input:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span>
+  <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span>
+  <span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Output:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span> <span class="hljs-number">4</span> <span class="hljs-number">7</span>
+  <span class="hljs-number">2</span> <span class="hljs-number">5</span> <span class="hljs-number">8</span>
+  <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">9</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Solution:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+  <span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">int</span> numbers[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>] = {
+              {<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>},
+              {<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>},
+              {<span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">9</span>}
+      };
+
+      <span class="hljs-keyword">int</span> transpose[<span class="hljs-number">3</span>][<span class="hljs-number">3</span>];
+
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++){
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">3</span>; j++) {
+              transpose[i][j] = numbers[j][i];
+          }
+      }
+
+      <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) {
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">3</span>; j++) {
+              <span class="hljs-built_in">cout</span> &lt;&lt; transpose[i][j] &lt;&lt; <span class="hljs-string">" "</span>;
+          }
+          <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-built_in">endl</span>;
+      }
+  }
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Explanation:
+<ul>
+<li>By transpose of a matrix, we understand that the rows becomes columns and viceversa.</li>
+<li>To start, we declare another two dimensional array which will be able to store the transpose.</li>
+<li>Then we iterate through the elements of the original matrix, and at each step, we simply store at the current position (<code>transpose[i][j]</code>), the element which can be found at the location given by <code>j</code> for the rows and <code>i</code> for the columns</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="homework-exercises">Homework exercises:</h2>
+<ol>
+<li>
+<p>Write a C++ program which computes the average of the prime numbers which can be found on the main diagonale of a matrix (Two-Dimensional array)</p>
+<ul>
+<li>Input:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>
+  <span class="hljs-number">5</span>  <span class="hljs-number">5</span>  <span class="hljs-number">7</span>  <span class="hljs-number">8</span>
+  <span class="hljs-number">9</span>  <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span>
+  <span class="hljs-number">13</span> <span class="hljs-number">14</span> <span class="hljs-number">15</span> <span class="hljs-number">15</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Output: <code>The average of the prime numbers on the main diagonale is 8</code></li>
+</ul>
+</li>
+<li>
+<p>Write a C++ program which computes the harmonic mean (media armonica) of the numbers on the second diagonale.</p>
+<ul>
+<li>Input:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>
+  <span class="hljs-number">5</span>  <span class="hljs-number">5</span>  <span class="hljs-number">7</span>  <span class="hljs-number">8</span>
+  <span class="hljs-number">9</span>  <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span>
+  <span class="hljs-number">13</span> <span class="hljs-number">14</span> <span class="hljs-number">15</span> <span class="hljs-number">15</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Output: <code>The harmonic mean of the numbers on the second diagonale is: 8,08</code></li>
+</ul>
+</li>
+<li>
+<p>Write a C++ program which computes the sum of the numbers on the main diagonale and the sum of the numbers on the second diagonale and then displays which one is greater</p>
+<ul>
+<li>Input:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>
+  <span class="hljs-number">5</span>  <span class="hljs-number">5</span>  <span class="hljs-number">7</span>  <span class="hljs-number">8</span>
+  <span class="hljs-number">9</span>  <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span>
+  <span class="hljs-number">13</span> <span class="hljs-number">14</span> <span class="hljs-number">15</span> <span class="hljs-number">15</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Output: <code>The second diagonale has the sum greater.</code></li>
+</ul>
+</li>
+<li>
+<p>Write a C++ program which displays if a certain number, read from the standard input, is present in a Two-Diagonale array. Also the program should display how many times the number has appeared in the matrix</p>
+<ul>
+<li>
+<p>Input: Enter the number to search for: 5</p>
+<ul>
+<li>
+<pre class="hljs"><code><div>      <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>
+      <span class="hljs-number">5</span>  <span class="hljs-number">5</span>  <span class="hljs-number">7</span>  <span class="hljs-number">8</span>
+      <span class="hljs-number">9</span>  <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span>
+      <span class="hljs-number">13</span> <span class="hljs-number">14</span> <span class="hljs-number">15</span> <span class="hljs-number">15</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>Output: <code>The number appears in the matrix 2 times</code></p>
+</li>
+<li>
+<p>Input 2: Enter the number to search for: 5</p>
+<pre class="hljs"><code><div>    <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>
+    <span class="hljs-number">5</span>  <span class="hljs-number">5</span>  <span class="hljs-number">7</span>  <span class="hljs-number">8</span>
+    <span class="hljs-number">9</span>  <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span>
+    <span class="hljs-number">13</span> <span class="hljs-number">14</span> <span class="hljs-number">15</span> <span class="hljs-number">15</span>
+</div></code></pre>
+</li>
+<li>
+<p>Output: <code>The number could be found in the matrix</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="advanced-exercises">Advanced exercises</h2>
+<ol>
+<li>Write a C++ program which displays the number below the main diagonal (including the ones on the diagonal itself). The numbers should be displayed in a nice and formatted way. See the output below
+<ul>
+<li>Input:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>
+  <span class="hljs-number">5</span>  <span class="hljs-number">5</span>  <span class="hljs-number">7</span>  <span class="hljs-number">8</span>
+  <span class="hljs-number">9</span>  <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span>
+  <span class="hljs-number">13</span> <span class="hljs-number">14</span> <span class="hljs-number">15</span> <span class="hljs-number">15</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Output:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span>
+  <span class="hljs-number">5</span>   <span class="hljs-number">5</span>
+  <span class="hljs-number">9</span>   <span class="hljs-number">10</span>  <span class="hljs-number">11</span>
+  <span class="hljs-number">13</span>  <span class="hljs-number">14</span>  <span class="hljs-number">15</span>  <span class="hljs-number">15</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Write a C++ program which displays the prime numbers below the main diagonal (including the ones on the diagonal itself).
+<ul>
+<li>Input:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">1</span>  <span class="hljs-number">2</span>  <span class="hljs-number">3</span>  <span class="hljs-number">4</span>
+  <span class="hljs-number">5</span>  <span class="hljs-number">5</span>  <span class="hljs-number">7</span>  <span class="hljs-number">8</span>
+  <span class="hljs-number">9</span>  <span class="hljs-number">10</span> <span class="hljs-number">11</span> <span class="hljs-number">12</span>
+  <span class="hljs-number">13</span> <span class="hljs-number">14</span> <span class="hljs-number">15</span> <span class="hljs-number">15</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+<li>Output:
+<ul>
+<li>
+<pre class="hljs"><code><div>  <span class="hljs-number">5</span> <span class="hljs-number">5</span> <span class="hljs-number">11</span> <span class="hljs-number">13</span>
+</div></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+</body>
+</html>
