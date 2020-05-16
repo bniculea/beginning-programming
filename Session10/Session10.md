@@ -108,6 +108,44 @@
         ```
 
 3. Write a C++ program which will display the elements from a matrix, which are not present on either diagonale (nor main or second).
+    - Sample Input:
+        ```JSON
+            12 13 21 17 
+            8  9  15 4 
+            2  3  7  9 
+            21 24 29 18 
+        ```
+    - Sample Output:
+        ```JSON
+            13	21	
+            8	4	   
+            2	9	
+            24	29	
+        ```
+    - Solution: 
+        ```C++
+            #include <iostream>
+            using namespace std;
+
+            int main() {
+
+                int matrixA[4][4] = {
+                        {12, 13,  21, 17},
+                        {8,   9,  15,  4},
+                        {2,   3,  7,  9},
+                        {21,  24, 29, 18}
+                };
+
+                for(int i = 0; i < 4; i++) {
+                    for(int j = 0; j < 4; j++) {
+                        if( i!=j && j != (4 - i -1)) {
+                            cout << matrixA[i][j] << "\t";
+                        }
+                    }
+                    cout << endl;
+                }
+            }
+        ```
 
 //TODO => Add sample input/output
 
