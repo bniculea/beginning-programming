@@ -147,9 +147,7 @@
             }
         ```
 
-//TODO => Add sample input/output
-
-1. Write a C++ program which will multiply a scalar with a two dimensional matrix
+4. Write a C++ program which will multiply a scalar with a two dimensional matrix
     - The theory says that the result will be a matrix where each element is the element from the first matrix, multiplied with the scalar.
     - Sample Input:
         ```JSON
@@ -194,7 +192,7 @@
                 }
             }
         ```
-2. Write a C++ program to multiply 2-dimensional arrays one by the other. This is also called matrix multiplication. 
+5. Write a C++ program to multiply 2-dimensional arrays one by the other. This is also called matrix multiplication. 
     - Theory:
         - Make sure that the number of columns in the 1st matrix, equals the number of rows in the 2nd matrix
         - Multiply the elements of each row of the first matrix by the elements of each column in the second matrix
@@ -254,7 +252,55 @@
             }
         }
     ```
+6. Write a C++ program which adds two matrices of same dimensions (Same number of rows and columns)
+    - Theory: We should add the elements which are on the same position and put the result back in the resulting matrix
+    - Sample Input:
+        ```JSON
+            3 2 1    2 9 0
+            9 1 3    1 3 5
+            2 6 11   2 4 7
+        ```
+    - Sample Output:
+        ```JSON
+            5  11 1
+            10 4  8
+            4  10 18
+        ```
+    - Solution:
+        ```C++
+            #include <iostream>
+            using namespace std;
 
+            int main() {
+
+            int matrixA[3][3] = {
+                    {3, 2, 1},
+                    {9, 1, 3},
+                    {2,6,11}
+            };
+
+            int matrixB[3][3] = {
+                    {2,9,0},
+                    {1,3,5},
+                    {2,4,7}
+            };
+
+            int resultMatrix[3][3];
+
+                for(int i = 0; i < 3; i++) {
+                    for(int j = 0; j < 3; j++) {
+                        resultMatrix[i][j] = matrixA[i][j] + matrixB[i][j];
+                    }
+                }
+
+                for(int i = 0; i < 3; i++) {
+                    for(int j = 0; j < 3; j++) {
+                        cout << resultMatrix[i][j] << "\t";
+                    }
+                    cout << endl;
+                }
+            }
+        ```
 
 ## Homework exercises
 
@@ -273,3 +319,70 @@
             2  10 7  9 
             13 24 29 18 
         ```
+2. Write a C++ program which will subtract two matrices of same dimensions (Same number of rows and columns)
+    - Sample Input:
+        ```JSON
+            3 2 1    2 9 0
+            9 1 3    1 3 5
+            2 6 11   2 4 7
+        ```
+    - Sample Output:
+        ```JSON
+            1 -7  1	
+            8 -2 -2	
+            0  2  4
+        ```
+3. Write a C++ program which will determine if two matrices are equal. Theory sais that two matrices are equal if and only if they have the same dimensions and same elements.
+    - Sample Input:
+        ```JSON
+            3 2 1    2 9 0
+            9 1 3    1 3 5
+            2 6 11   2 4 7
+        ```
+    - Sample Output: `false`
+    - Sample Input2:
+        ```JSON
+            0 0    0 0 0
+            0 0    0 0 0
+            0 0    0 0 0
+        ```
+    - Sample Output2: `false`
+    - Sample Input2:
+        ```JSON
+            1 2 3    1 2 3
+            2 3 4    2 3 4
+            4 5 6    4 5 6
+        ```
+    - Sample Output2: `true`
+
+4. Write a C++ program which will divide a matrix by a scalar. Note that you can only divide a matrix by a scalar! You cannot divide two matrices
+    - Sample Input:
+        ```JSON
+                     2.0 9.0 7.0
+            4.0      1.0 3.0 5.0
+                     2.0 4.0 7.0
+        ```
+    - Sample Output:
+        ```JSON
+        0.5 	2.25	1.75	
+        0.25	0.75	1.25	
+        0.5	    1	    1.75
+        ```
+5. Write a C++ program which will determine if a matrix has two consecutive rows identical.
+    - Sample Input:
+        ```JSON
+            1 2 3
+            2 3 4
+            4 5 6
+        ```
+    - Sample Output: `false`
+    - Sample Input2:
+        ```JSON
+            1 2 3
+            2 3 4
+            2 3 4
+        ```
+    - Sample Output2: `true`
+### Guidelines
+- Try to redo the exercises from class again, without looking at the solution and then compare your solution with the one from class. 
+- Note, most of the time, our solutions will not match! Even you if you make the same program now and after 2,3 days, you will come with a different approach, so don't worry!
