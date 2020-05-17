@@ -301,7 +301,151 @@
                 }
             }
         ```
+7. Create a C++ program which computes the sum of all even numbers in a matrix.
+    - Sample Input: 
+        ```JSON
+            2 9 0
+            1 3 5
+            2 4 7
+        ```
+    - Sample Output:
+        - `8`
+    - Solution:
+        ```C++
+            #include <iostream>
+            using namespace std;
 
+            int main() {
+
+            int matrixA[3][3] = {
+                    {2,9,0},
+                    {1,3,5},
+                    {2,4,7}
+            };
+
+                int sum = 0;
+                for(int i = 0; i < 3; i++) {
+                    for(int j = 0; j < 3; j++) {
+                    if (matrixA[i][j] % 2 == 0) {
+                        sum += matrixA[i][j];
+                    }
+                    }
+                }
+
+            cout<< sum;
+            }
+        ```
+8. Create a C++ program which computes the histogram of a 2D Array and then displays each frequency in dashes. The Matrix is allowed to contain only digits from 0 to 9 inclusive.
+    - Sample Input: 
+        ```JSON
+            1 2 3 4
+            1 2 3 2
+            1 1 2 3
+            1 1 5 6
+            9 9 8 1
+        ```
+    - Sample Output:
+        ```JSON
+            0: 
+            1: - - - - - - - 
+            2: - - - - 
+            3: - - - 
+            4: - 
+            5: - 
+            6: - 
+            7: 
+            8: - 
+            9: - - 
+        ```
+    - Solution:
+        ```C++
+            #include <iostream>
+            using namespace std;
+
+            int main() {
+
+            int matrixA[5][4] = {
+                    {1,2,3,4},
+                    {1,2,3,2},
+                    {1,1,2,3},
+                    {1,1,5,6},
+                    {9,9,8,1}
+            };
+
+                int frequency[10] = {0};
+
+                for(int i = 0; i < 5; i++) {
+                    for(int j = 0; j < 4; j++) {
+                    frequency[matrixA[i][j]]++;
+                    }
+                }
+
+                for(int i = 0; i < 10; i++) {
+                    cout<<i <<": ";
+                    for(int j = 0; j < frequency[i]; j++) {
+                        cout<<"- ";
+                    }
+                    cout<<endl;
+                }
+            }
+        ```
+9. Create a C++ program which traverses a matrix and in each cell it places the maximum between the index of the row and the index of the column
+    - Sample Input:
+        ```JSON
+            1 2 3 4
+            1 2 3 2
+            1 1 2 3
+            1 1 5 6
+            9 9 8 1
+        ```
+    - Sample Output:
+        ```JSON
+            0 1 2 3 
+            1 1 2 3 
+            2 2 2 3 
+            3 3 3 3 
+            4 4 4 4 
+        ```
+    - Solution:
+        ```C++
+            #include <iostream>
+
+            int maxOf(int i, int j);
+
+            using namespace std;
+
+            int main() {
+
+            int matrixA[5][4] = {
+                    {1,2,3,4},
+                    {1,2,3,2},
+                    {1,1,2,3},
+                    {1,1,5,6},
+                    {9,9,8,1}
+            };
+
+                for(int i = 0; i < 5; i++) {
+                    for(int j = 0; j < 4; j++) {
+                    matrixA[i][j] = maxOf(i, j);
+                    }
+                }
+
+                for(int i = 0; i < 5; i++) {
+                    for(int j = 0; j < 4; j++) {
+                    cout << matrixA[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+            }
+
+            int maxOf(int i, int j) {
+                if(i > j) {
+                    return i;
+                } else {
+                    return j;
+                }
+            }
+        ```
 ## Homework exercises
 
 1. Write a C++ program which will replace each element from the second diagonale with the average of its neighbors

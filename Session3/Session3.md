@@ -4,10 +4,11 @@
 ## ***Variables***
 
 ### Variable types
-    - There are several different types of variables, and each type of variable is used for storing a particular kind of data
+    - There are several types of variables, and each type of variable is used for storing a particular kind of data
         - integer numerical values
         - noninteger numerical values (e.g 12.032)
         - character values (e.g 'a', "ala bala portocala")
+        - complex data structures (we will learn about them in a later lesson)
 
 
 #### **Integer variables**

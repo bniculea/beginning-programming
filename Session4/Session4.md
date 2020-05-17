@@ -32,7 +32,7 @@
     - `short int`
     - `long int`
     - `long long int`
-    - However, these types are almost always written in thei abbreviated forms. Type int can also be written as `signed int`, but you won't see this often.
+    - However, these types are almost always written in their abbreviated forms. Type int can also be written as `signed int`, but you won't see this often.
 
 ### Unsigned Integer Types
 
