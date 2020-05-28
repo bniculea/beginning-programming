@@ -37,7 +37,7 @@
 - We typically use the for loop to execute a block of statements a given number of times. 
     - Let's suppose you want to display the numbers from 1 to 10. Instead of writing ten statements that coul `cout`, we can write it like this:
         - ```c++
-            for (int count = 1; cout <=10; count++) {
+            for (int count = 1; count <=10; count++) {
                 cout << count << " ";
             }
         ```
