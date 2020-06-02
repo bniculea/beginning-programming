@@ -130,7 +130,62 @@
    - Solution:
 
      ```c++
+            #include <iostream>
+            using namespace std;
 
+            const int n = 4;
+            bool isElementInsideMatrixBoundary(int row, int col);
+            int main()
+            {
+                int mat[n][n]={
+                        {1,3,4,10},
+                        {2,5,9,11},
+                        {6,8,12,15},
+                        {7,13,14,16}
+                };
+
+                int currentRow = 0;
+                int currentCol = 0;
+                int direction = 0; // 0 => going down, 1 => going up
+                while (currentRow < n || currentCol < n) {
+                    int temporaryRow = currentRow;
+                    int temporaryCol = currentCol;
+                    if(direction == 0) {
+                        while(isElementInsideMatrixBoundary(temporaryRow, temporaryCol)) {
+                            currentRow = temporaryRow;
+                            currentCol = temporaryCol;
+                            cout << mat[currentRow][currentCol] << " ";
+                            temporaryRow +=1;
+                            temporaryCol -=1;
+                        }
+                        direction = 1;
+                        if(isElementInsideMatrixBoundary(currentRow+1, currentCol)) {
+                            currentRow++;
+                        } else {
+                            currentCol++;
+                        }
+                    } else if (direction == 1) {
+                        while(isElementInsideMatrixBoundary(temporaryRow, temporaryCol)) {
+                            currentRow = temporaryRow;
+                            currentCol = temporaryCol;
+                            cout << mat[currentRow][currentCol] << " ";
+                            temporaryRow -=1;
+                            temporaryCol +=1;
+                        }
+                        direction = 0;
+                        if(isElementInsideMatrixBoundary(currentRow, currentCol+1)) {
+                            currentCol++;
+                        } else {
+                            currentRow++;
+                        }
+                    }
+                }
+                return 0;
+            }
+
+            bool isElementInsideMatrixBoundary(int row, int col) {
+                return (row >= 0 && row < n) && (col >= 0 && col < n);
+            }
      ```
 
 4. Given an array with `n` rows and `n` columns and natural number elements, create a C++ program which will Display, in ascending order, the sums of the elements in the four areas delimited by diagonals.
@@ -202,4 +257,58 @@
             }
             return 0;
         }
+     ```
+
+5. Give a matrix with `n` rows and `n` columns and natural elements, create a C++ program which will determine how many elements of the matrix are on rows and columns which have the same sum.
+
+   - Sample Input:
+
+     ```json
+     3 1 8 5 4
+     7 8 5 1 2
+     2 2 6 7 3
+     9 8 1 3 6
+     7 5 3 1 7
+     ```
+
+   - Sample Output:
+     2
+
+   - Solution:
+
+     ```c++
+     #include <iostream>
+     using namespace std;
+
+     const int n = 5;
+     int main()
+     {
+         int mat[n][n]={
+                 {3,1,8,5,4},
+                 {7,8,5,1,2},
+                 {2,2,6,7,3},
+                 {9,8,1,3,6},
+                 {7,5,3,1,7}
+         };
+
+         int rowsSum[n] = {0};
+         int columnsSum[n] = {0};
+         int count = 0;
+         for (int i = 0; i < n; i++) {
+             for(int j = 0; j < n; j++) {
+                 rowsSum[i] += mat[i][j];
+                 columnsSum[i] += mat[j][i];
+             }
+         }
+
+         for (int i = 0; i < n; i++) {
+             for(int j = 0; j < n; j++) {
+                 if(rowsSum[i] == columnsSum[j]) {
+                     count++;
+                 }
+             }
+         }
+         cout << count;
+         return 0;
+     }
      ```
