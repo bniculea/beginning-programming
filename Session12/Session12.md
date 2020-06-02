@@ -312,3 +312,294 @@
          return 0;
      }
      ```
+
+6. Given a matrix with `n` rows and `n` columns, create a C++ program which will sort each matrix row, ascending, and then, each column ascending.
+
+   - Sample Input:
+     ```json
+     12 7 1 8
+     20 9 11 2
+     15 4 5 13
+     3 18 10 6
+     ```
+   - Sample Output:
+     ```json
+     1 5 8 12
+     2 6 10 15
+     3 7 11 18
+     4 9 13 20
+     ```
+   - Solution:
+
+     ```c++
+         #include <iostream>
+         using namespace std;
+
+         const int n = 4;
+         int main()
+         {
+             int mat[n][n]={
+                     {12,7,1,8},
+                     {20,9,11,2},
+                     {15,4,5,13},
+                     {3,18,10,6}
+             };
+
+             for(int i =0; i < n; i++) {
+                 for (int j = 0; j < n; j++) {
+                     for(int k = 0; k < n-1; k++) {
+                         if(mat[j][k] > mat[j][k+1]) {
+                             int temp = mat[j][k];
+                             mat[j][k] = mat[j][k+1];
+                             mat[j][k+1] = temp;
+                         }
+                     }
+                 }
+             }
+
+             for(int i =0; i < n; i++) {
+                 for (int j = 0; j < n; j++) {
+                     for(int k = 0; k < n-1; k++) {
+                         if(mat[k][j] > mat[k+1][j]) {
+                             int temp = mat[k][j];
+                             mat[k][j] = mat[k+1][j];
+                             mat[k+1][j] = temp;
+                         }
+                     }
+                 }
+             }
+
+                for(int i = 0; i< n; i++) {
+                    for (int j = 0; j < n; j++) {
+                        cout << mat[i][j] << " ";
+                    }
+                    cout << endl;
+                }
+
+                return 0;
+            }
+
+     ```
+
+7. Create a C++ program which will read a matrix with `n` rows and `n` columns from the keyboard and then will display all the values which are strictly greater than their neighbors.
+
+   - Sample Input:
+     ```json
+         n = 4;
+         1 5 1 1
+         2 1 2 3
+         1 3 4 2
+         2 1 2 1
+     ```
+   - Sample Output: 5 2 3 4 2
+   - Solution:
+
+     ```c++
+        #include <iostream>
+        using namespace std;
+
+        bool isCurrentElementHigherThanNeighbors(int mat[20][20], int n, int i, int j);
+
+        int main()
+        {
+
+            cout<<"Enter the dimension of the matrix: ";
+            int n;
+            cin >> n;
+            int mat[20][20] = {0};
+
+            for(int i = 0; i < n;i++) {
+                for (int j = 0; j < n; j++) {
+                    cout << "Enter element Mat["<<i<<","<<j<<"]: ";
+                    cin >> mat[i][j];
+                    cout << endl;
+                }
+            }
+
+            for(int i = 0; i < n;i++) {
+                for (int j = 0; j < n; j++) {
+                    if(isCurrentElementHigherThanNeighbors(mat, n, i, j)){
+                        cout << mat[i][j]<<" ";
+                    }
+                }
+            }
+
+            return 0;
+        }
+
+        bool isCurrentElementHigherThanNeighbors(int mat[20][20], int n, int i, int j) {
+            if(i -1 >= 0  && mat[i-1][j] > mat[i][j]) {
+                return false;
+            }
+
+            if(j+1 < n && mat[i][j+1] > mat[i][j]){
+                return false;
+            }
+
+            if(i+1 < n && mat[i+1][j] > mat[i][j]) {
+                return false;
+            }
+
+            if(j-1 >= 0 && mat[i][j-1] > mat[i][j]) {
+                return false;
+            }
+
+            return true;
+        }
+     ```
+
+8. Given a square matrix with `n` rows and `n` columns, create a C++ program which will update the matrix as follows: all the elements which are on rows that contain the maximum value from the matrix, will be increased with the minimum value from the matrix.
+
+   - Sample Input:
+     ```json
+         n = 4
+         2 5 3 2
+         2 2 4 4
+         3 2 2 2
+         5 3 5 2
+     ```
+   - Sample Output:
+     ```C++
+     4 7 5 4
+     2 2 4 4
+     3 2 2 2
+     7 5 7 4
+     ```
+   - Solution:
+
+     ```c++
+        #include <iostream>
+        using namespace std;
+
+        const int n = 4;
+
+        int main()
+        {
+            int mat[n][n]={
+                    {2,5,3,2},
+                    {2,2,4,4},
+                    {3,2,2,2},
+                    {5,3,5,2}
+            };
+
+            int min = mat[0][0];
+            int max = mat[0][0];
+            int rowsContainingMax[n] = {0}; // 0 means it does not contain the max, 1 means it contains the max
+
+            for(int i = 0; i < n;i++) {
+                for (int j = 0; j < n; j++) {
+                    if(mat[i][j] < min) {
+                        min = mat[i][j];
+                    }
+
+                    if (mat[i][j]> max) {
+                        max = mat[i][j];
+                    }
+                }
+            }
+
+            for(int i = 0; i < n;i++) {
+                for (int j = 0; j < n; j++) {
+                    if(mat[i][j] == max) {
+                        rowsContainingMax[i] = 1;
+                        break;
+                    }
+                }
+            }
+
+            for(int i = 0; i < n;i++) {
+                for (int j = 0; j < n; j++) {
+                    if(rowsContainingMax[i] == 1) {
+                        mat[i][j] += min;
+                    }
+                }
+            }
+
+            for(int i = 0; i < n;i++) {
+                for (int j = 0; j < n; j++) {
+                    cout << mat[i][j] << " ";
+                }
+                cout << endl;
+            }
+
+            return 0;
+        }
+
+     ```
+
+9. Given a square matrix with `n` rows and `n` columns and natural elements smaller than 1000, create a C++ program which will display in ascending order, the elements placed below the main diagonale and above the second diagonale. If a value appears multiple time in that area, it will be displayed only once.
+
+   - Sample Input:
+
+     ```json
+     n = 6
+
+     10 8 5 8 4 2
+     6 5 3 1 3 8
+     8 1 4 7 8 8
+     5 1 9 6 6 1
+     8 9 10 1 3 6
+     8 2 3 3 9 6
+     ```
+
+   - Sample Output:
+     1 5 6 8
+   - Solution:
+
+     ```c++
+         #include <iostream>
+         using namespace std;
+
+         const int n = 6;
+
+         int main()
+         {
+             int mat[n][n]= {
+                     {10, 8, 5,  8, 4, 2},
+                     {6,  5, 3,  1, 3, 8},
+                     {8,  1, 4,  7, 8, 8},
+                     {5,  1, 9,  6, 6, 1},
+                     {8,  9, 10, 1, 3, 6},
+                     {8,  2, 3,  3, 9, 6}
+             };
+
+                int elements[n*n/2] = {0};
+                int matchingElementsSize = 0;
+                for(int i = 0; i < n;i++) {
+                    for (int j = 0; j < n; j++) {
+                        if ( i > j && j < (n-i-1)) {
+                        elements[matchingElementsSize++] = mat[i][j];
+                        }
+                    }
+                }
+
+                // Sort elements which correspond to the problem's statement
+                for(int i =0; i < matchingElementsSize; i++) {
+                    for (int j = 0; j < matchingElementsSize-1;j++) {
+                        if(elements[j] > elements[j+1]) {
+                            int temp = elements[j];
+                            elements[j] = elements[j+1];
+                            elements[j+1] = temp;
+                        }
+                    }
+                }
+
+                // Eliminate duplicates (if any)
+                for(int i = 0; i <matchingElementsSize -1; i++) {
+                    if(elements[i] == elements[i+1]) {
+                        for(int j = i+1; j< matchingElementsSize; j++) {
+                            elements[j] = elements[j+1];
+                        }
+                        matchingElementsSize--;
+                        i--;
+                    }
+                }
+
+                // Display the elements
+                for(int i = 0; i < matchingElementsSize; i++) {
+                    cout << elements[i] <<" ";
+                }
+
+                return 0;
+            }
+     ```
