@@ -603,3 +603,55 @@
                 return 0;
             }
      ```
+
+10. Given a square matrix with `n` rows and `n` columns and natural elements which are smaller than 1000, create a C++ program which will display in ascending order, the values which appear below the main diagonal and below the second diagonal at least two times. Each value will be displayed only once.
+
+    - Sample Input:
+      ```json
+      n = 6
+      10 8 5 8 4 2
+      6 5 3 1 3 8
+      8 1 4 7 8 8
+      5 1 9 6 6 1
+      8 9 3 2 3 6
+      8 9 3 3 9 6
+      ```
+    - Sample Output: 3 9
+    - Solution:
+
+      ```c++
+        #include <iostream>
+        using namespace std;
+
+        const int n = 6;
+
+        int main()
+        {
+            int mat[n][n]= {
+                    {10, 8, 5,  8, 4, 2},
+                    {6,  5, 3,  1, 3, 8},
+                    {8,  1, 4,  7, 8, 8},
+                    {5,  1, 9,  6, 6, 1},
+                    {8,  9, 3, 2, 3, 6},
+                    {8,  9, 3,  3, 9, 6}
+            };
+
+            int matchingElementsFrequency[1000] = {0};
+
+            for(int i = 0; i < n;i++) {
+                for (int j = 0; j < n; j++) {
+                    if(i > j && j > (n - i - 1)) {
+                        matchingElementsFrequency[mat[i][j]]++;
+                    }
+                }
+            }
+
+            for(int i = 0; i < 1000; i++) {
+                if(matchingElementsFrequency[i] >= 2) {
+                    cout <<i<<" ";
+                }
+            }
+
+            return 0;
+        }
+      ```
