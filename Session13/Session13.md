@@ -489,3 +489,70 @@ A natural number n is called superprim if among the numbers that can be obtained
     }
 
   ```
+
+17. Given `n` distinct points in the cartesian system, create a C++ program which finds the maximum number of points inside or on the sides of a square of side `k`, with integer coordinate points and sides parallel to the coordinate axes.
+
+The `pct.in` input file contain on the first line the numbers `n` and `k` and on the second line and the following, `n` pairs of numbers representing coordinates of the points, separated by spaces.
+
+The `pct.out` file will contain on the first line the maximum number of points situated inside or on the sides of a square with side equal to `k`.
+
+- Sample Input (`pct.in`):
+
+  ```json
+      3 2
+      1 1
+      1 0
+      3 4
+  ```
+
+- Sample Output (`pct.out`): 2
+- Solution:
+
+  ```c++
+      #include <iostream>
+      #include <fstream>
+      #include <cmath>
+      double distanceBetweenTwoPoints(int x1, int y1, int x2, int y2);
+      using namespace std;
+      int main() {
+            ifstream fin;
+            ofstream fout;
+            fin.open("pct.in");
+            fout.open("pct.out");
+
+            int n, k;
+            fin >> n >> k;
+            int matrix [n][2];
+
+            for(int i =0; i < n; i++) {
+                for(int j =0; j < 2; j++) {
+                    fin >> matrix[i][j];
+                }
+            }
+
+            int maxPointsInside = 0;
+
+            for(int i =0; i < n; i++) {
+                int numbersInside = 0;
+                for(int j =0; j< n; j++) {
+                    if(distanceBetweenTwoPoints(matrix[i][0], matrix[i][1], matrix[j][0], matrix[j][1]) <=k) {
+                        numbersInside++;
+                    }
+                }
+                if(maxPointsInside < numbersInside) {
+                    maxPointsInside = numbersInside;
+                }
+
+            }
+
+            fout << maxPointsInside;
+
+            return 0;
+        }
+
+        double distanceBetweenTwoPoints(int x1, int y1, int x2, int y2) {
+            double sum = pow((x1-x2), 2) + pow((y1-y2),2);
+            return sqrt(sum);
+        }
+
+  ```
