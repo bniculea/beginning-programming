@@ -377,3 +377,115 @@ The output file `spiral1.out` will contain the constructed array, one line of th
         return 0;
     }
   ```
+
+16. Create a C++ program which Reads from input file a square matrix A with `n` rows and `n` columns and natural elements. The program should update the matrix as follows:
+
+I. interchange the elements of the matrix in the upper triangle with the ones in the lower triangle of the matrix
+
+II. then swap the distinct superprime elements, which appear in the right triangle with the left triangle of the matrix (both elements must be superprime);
+
+A natural number n is called superprim if among the numbers that can be obtained by moving, in turn, the first digit of the number n and those obtained along the way, on the last position, there is at least one prime number. For example 124 is "super-prime" because of the numbers 241, 412 and 124, the number 241 is prime. 15 is not "super-prime" because neither 51 nor 15 are prime numbers.
+
+- Sample Input (`matrice.in`):
+  ```json
+      1 3 4 2
+      8 1 2 7
+      124 2 1 32
+      2 5 6 1
+  ```
+- Sample Output (`matrice.out`):
+  ```json
+      1 5 6 2
+      8 1 2 7
+      32 2 1 124
+      2 3 4 1
+  ```
+- Solution:
+
+  ```c++
+    #include <iostream>
+    #include <fstream>
+    #include <cmath>
+
+    bool isSuperPrime(int number);
+    int moveFirstDigitToLastPosition(int number);
+    bool isPrime(int number);
+
+    using namespace std;
+    int main() {
+
+        ifstream fin;
+        ofstream fout;
+        fin.open("matrice.in");
+        fout.open("matrice.out");
+
+        int n;
+        fin >> n;
+        int matrix [n][n];
+
+        for (int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                fin >> matrix[i][j];
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                //Interchange of upper triangle with lower triangle
+                if(i <j  && j < (n-i-1)) {
+                    int temp = matrix[i][j];
+                    matrix[i][j] = matrix[n-1-i][j];
+                    matrix[n-1-i][j] = temp;
+                } else if(i > j  && j < n-1-i) {
+                    if(isSuperPrime(matrix[i][j]) && isSuperPrime(matrix[i][n-1-j])) {
+                        int temp = matrix[i][j];
+                        matrix[i][j] = matrix[i][n-1-j];
+                        matrix[i][n-1-j] = temp;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                fout << matrix[i][j] <<" ";
+            }
+            fout << endl;
+        }
+
+        return 0;
+    }
+
+    bool isSuperPrime(int number) {
+        bool result = false;
+        int temp = moveFirstDigitToLastPosition(number);
+        while(temp != number) {
+            if(isPrime(temp)) {
+                result = true;
+                break;
+            }
+            temp = moveFirstDigitToLastPosition(temp);
+        }
+        return result;
+    }
+
+    int moveFirstDigitToLastPosition(int number) {
+        int digits = log10(number);
+        int firstDigit =(int) number / pow(10, digits);
+        int numberWithoutFirstDigit =  number - firstDigit * (int)(pow(10, digits));
+        return numberWithoutFirstDigit * 10 + firstDigit;
+
+    }
+
+    bool isPrime(int number) {
+        bool result = true;
+        for (int i = 2; i < number / 2; i++) {
+            if (number % i == 0) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+  ```
