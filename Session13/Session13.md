@@ -225,5 +225,155 @@ The `encryption.out` output file will contain the Sol number on the first line, 
 - Solution:
 
   ```c++
+    #include <iostream>
+    #include <fstream>
 
+    using namespace std;
+    int computersEncrypted[1000][1000] = { 0 };
+    int main() {
+        ifstream fin;
+        ofstream fout;
+        fin.open("criptare.in");
+        fout.open("criptare.out");
+        int n;
+        fin >> n;
+
+        int mat[n][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                fin >> mat[i][j];
+            }
+        }
+        int sol = 0;
+
+        for (int i = 0; i < n; i++) {
+            bool isAllZeroes = true;
+            for (int j = 0; j < n; j++) {
+                if (mat[i][j] == 1) {
+                    isAllZeroes = false;
+                }
+            }
+
+            if (isAllZeroes) {
+                mat[i][0] = 1;
+                computersEncrypted[i][0] = 1;
+                sol++;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            bool isAllZeroes = true;
+            for (int j = 0; j < n; j++) {
+                if (mat[j][i] == 1) {
+                    isAllZeroes = false;
+                }
+            }
+
+            if (isAllZeroes) {
+                mat[i][0] = 1;
+                computersEncrypted[0][i] = 1;
+                sol++;
+            }
+        }
+        fout << sol << endl;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (computersEncrypted[i][j] != 0) {
+                    fout << i+1 << " " << j+1 << endl;
+                }
+            }
+        }
+        return 0;
+    }
+  ```
+
+15. Give n natural numbers, an n is a perfect square. Construct in memory a square matrix with all n numbers, in a spiral, counterclockwise as follows: on the first column, starting with line 1, the first elements in the row (from top to bottom) will be passed, then on last row, starting from the first column to the last (from left to right), then on the last column, from the last row to the first (bottom to top), then on the first row, from the last column to the first right to left) and so on.
+
+The `spiral1.in` input file contains the number n on the first line, and the n numbers on the next line.
+The output file `spiral1.out` will contain the constructed array, one line of the array on one line of the file, the elements of each line being separated by exactly one space.
+
+- Sample Input: (`spirala1.in`)
+  ```json
+      9
+      2 6 7 3 7 1 7 1 5
+  ```
+- Sample Output: (`spirala1.out`)
+  ```json
+    2 1 7
+    6 5 1
+    7 3 7
+  ```
+- Solution:
+
+  ```c++
+    #include <iostream>
+    #include <fstream>
+    #include <cmath>
+
+    using namespace std;
+    int main() {
+        ifstream fin;
+        ofstream fout;
+        fin.open("spirala1.in");
+        fout.open("spirala1.out");
+
+        int n;
+        fin >> n;
+
+        int squareRootOfN = sqrt(n);
+        int mat[squareRootOfN][squareRootOfN];
+        int allNumbers[n];
+
+        for (int i = 0; i < n; i++) {
+            fin >> allNumbers[i];
+        }
+
+        int startRowIndex = 0;
+        int endRowIndex = squareRootOfN;
+        int startColIndex = 0;
+        int endColIndex = squareRootOfN;
+
+        int i = 0;
+        while (i < n) {
+
+            //draw first column
+            for(int j = startRowIndex; j < endRowIndex;j++) {
+                mat[j][startColIndex] = allNumbers[i];
+                i++;
+            }
+            startColIndex++;
+
+            //draw last line
+            for(int j = startColIndex; j < endColIndex; j++) {
+                mat[endRowIndex-1][j] = allNumbers[i];
+                i++;
+            }
+
+            endRowIndex--;
+
+            //draw last column
+            for(int j = endRowIndex-1; j >= startRowIndex; j--) {
+                mat[j][endColIndex-1]=allNumbers[i];
+                i++;
+            }
+            endColIndex--;
+
+            // draw top line
+            for(int j = endColIndex-1;j >= startColIndex;j--){
+                mat[startRowIndex][j] = allNumbers[i];
+                i++;
+            }
+            startRowIndex++;
+
+        }
+
+        for(int i = 0; i < squareRootOfN; i++) {
+            for(int j = 0; j < squareRootOfN; j++) {
+                fout << mat[i][j] << " ";
+            }
+            fout << endl;
+        }
+
+        return 0;
+    }
   ```
