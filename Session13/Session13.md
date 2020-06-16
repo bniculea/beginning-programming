@@ -556,3 +556,48 @@ The `pct.out` file will contain on the first line the maximum number of points s
         }
 
   ```
+
+18. Antonia, a ninth grade student, bored with chemistry tests and lessons, decides to create a game. She chooses two nonzero natural numbers, `n` and `k`, with the help of which she constructs a square matrix `n` x `n` in a spiral shape (from outside to inside, as in the figure below). Then, the girl fills the matrix with consecutive nonzero natural numbers, starting from k. The aim of the game is to calculate the sum of the elements on the main diagonal, but the girl has only 0.1 seconds until the teacher notices that she is not paying attention to the classes. For `n` = `6` and `k` = `1`, the matrix would look like this:
+    ![Quadrants](./images/wisp.png)
+
+Create a C++ program which will help Antonia to compute the sum of the elements on the main diagonale.
+The file `wisp.in` will contain on one line the numbers `n` and `k`, separated by a space, where `n` represents the number of lines and columns, and `k` is the value of the first element, placed on first row and first column.
+
+The file `wisp.out` will contain a single number `s`, the sum of the elements on the main diagonale
+
+- Sample Input (`wisp.in`):
+  ```json
+      6 1
+  ```
+- Sample Output (`wisp.out`): 128
+- Solution:
+
+  ```c++
+      #include <iostream>
+      #include <fstream>
+
+      using namespace std;
+      int main() {
+            ifstream fin;
+            ofstream fout;
+            fin.open("wisp.in");
+            fout.open("wisp.out");
+
+            int n, k;
+
+            fin >> n >> k;
+
+            int sum = k;
+            int lastDistance = 0;
+            for(int i = 1; i < n; i++) {
+                if(i % 2 == 1) {
+                    lastDistance = 2*n - 2*i;
+                }
+                k = k+ lastDistance;
+                sum +=k;
+            }
+            fout << sum;
+
+            return 0;
+        }
+  ```
