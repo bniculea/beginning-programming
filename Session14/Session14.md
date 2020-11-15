@@ -121,10 +121,9 @@
       using namespace std;
 
       int main() {
-          int number = 15; // A variable of type int initialized to 0
+          int number = 15; // A variable of type int initialized to 15
           int *pointerToNumber = NULL; //A pointer that can point to type int
 
-          number = 10;
           cout << "number's address: " << &number << endl; // outputs the address of the number variable
           cout << "number's value: " << number << endl; // outputs the value stored inside the number variable;
 
@@ -284,7 +283,7 @@
     3. We iterate through each of the characters in the array by using a `for` statement and the `strnlen` function which takes as input the array and its size
     4. We display the value which can be found at each position in the array by dereferencing the pointer plus the position. You can see this similar to:
        - \*p points to the first element
-       - _(p+n) is like go the n'th element from the beginning(e.g _(p+3) is the fourth element because is the one which is at a distance of three positions from the first)
+       - \*(p+n) is like go the n'th element from the beginning(e.g \_(p+3) is the fourth element because is the one which is at a distance of three positions from the first)
     5. We display the same thing, only that this time we use the name of the array instead of the pointer name. This is just to prove that the name of the array represents the address of the first element.
 
 - Very important: An array name refers to a fixed address and is not a pointer. You can use an array name and thus the address it references in an expression but you cannot modify it.
